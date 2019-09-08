@@ -2,15 +2,16 @@ Please answer the below core-java Questions:
 
 What is programing language?
 A.
-
+A programming language is a vocabulary and set of grammatical rules for
+instructing a computer or computing device to perform specific tasks.
 
 
 
 What jdk contains or composed of and define each components?
 A.
-
-
-
+JDK contains Java Runtime Environment (JRE), an interpreter/loader (Java),
+a compiler (javac), an archiver (jar), a documentation generator (Javadoc)
+and other tools needed in Java development.
 
 
 What is IDE?
@@ -20,20 +21,82 @@ Integrated development Environment
 
 What are the IDEs available in the market to support java?
 A.
-
+IntelliJ, Eclipse, NetBeans.
 
 
 Explain the entire java life cycle.
-what is class?
+A.
+Initially Java source code is written in an editor. Those written codes are
+saved into a Source file, whose extension is .java. Next step is to compile
+the source code, means translating into bytecode. Bytecode works machine
+language for JVM (Java Virtual Machine) and it's extension for .class .
+JVM uses 4 of its major components to run a java program:
+(a) Class loader loads the bytecode from hard drive into RAM (since JVM
+resides on RAM-Random Access Memory).
+(b) then the bytecode goes through bytecode verifier. (c) bytecode verifier
+verifies that no unnecessary classes can be run on JVM meaning java is secured and
+(d)after that byte codes go to Execution engine, which translates bytecode into
+native machine code, with the help of JIT Code Generator.
+
+
+What is class?
+A.
+Class is a blueprint of an object.
+
+
 What is object?
+A.
+An object is an instance of a class.
+
+
 What is the entry point of an application?
+A.
+The main method:
+public static void main (String[] args){}
+
+
 Why main is static?
+A.
+It is necessary because main() is called by the JVM before any objects are made.
+Since it is static it can be directly invoked via the class.
+
+
 Which class is the superclass of all classes?
+A.
+Object class.
+
+
 What is difference between path and classpath variables?
+A.
+Path variable is used to set the path for all Java software tools like java.exe,
+javac.exe, javadoc.exe, and etc. Classpath is system environment variable used
+by the Java compiler and JVM. Java compiler and JVM use class-path to determine
+the location of required class files.
+
+
 What is the difference between an Interface and Abstract class?
+A.
+Interface can only have abstract methods. Abstract classes can have both
+abstract methods and regular method. Abstract method is a method with no body
+and regular method is a method with body.
+
+
 Can you make an Object from an Interface and Abstract class ? if not how do you use it ?
+A.
+Interfaces and abstract classes cannot be instantiated. The only way to use them is, for
+a class to implement an interface or extend an abstract class.
+
+
 what is Access Specifier?
+A.
+Access specifiers establish the permissions we have to access or modify members of
+a class within a certain range.
+
+
 What is OOP ? Define each feature of java OOP.
+A.
+
+
 What is Java Package and which package is imported by default?
 What is API? Name list of API that you have used so far.
 Does java support multiple inheritance, explain why or why not?
