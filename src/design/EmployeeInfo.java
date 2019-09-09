@@ -2,7 +2,7 @@ package design;
 
 import java.util.Scanner;
 
-public class EmployeeInfo {
+public class EmployeeInfo extends Emp101 {
 	
  /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
  * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
@@ -16,6 +16,27 @@ public class EmployeeInfo {
  * Use Exception Handling.
  *
  */
+
+	private String name;
+	private int employeeId;
+	private String deptName;
+	private static int salary;
+	private char gender;
+	private int rating;
+
+
+
+	public EmployeeInfo () {}
+
+	public EmployeeInfo(String name, int employeeId, String deptName, char gender, int salary, int rating) {
+		this.name = name;
+		this.employeeId = employeeId;
+		this.deptName = deptName;
+		this.gender = gender;
+		this.salary=salary;
+		this.rating=rating;
+	}
+
 
 	/*
 	 * declare few static and final fields and some non-static fields
@@ -33,10 +54,109 @@ public class EmployeeInfo {
 	 * Must implement below constructor.
 	 */
 	public EmployeeInfo(int employeeId){
-		
+		this.employeeId=employeeId;
 	}
     public EmployeeInfo(String name, int employeeId){
-		
+		this.name=name;
+		this.employeeId=employeeId;
+	}
+
+	public EmployeeInfo(String name, int employeeId, String deptName, int salary, char gender) {
+		this.name = name;
+		this.employeeId = employeeId;
+		this.deptName = deptName;
+		this.salary = salary;
+		this.gender = gender;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	@Override
+	public int employeeId() {
+		return employeeId;
+	}
+
+	@Override
+	public String employeeName() {
+		return empName;
+	}
+
+	public void assignDepartment() {
+		this.deptName=deptName;
+
+	}
+
+	@Override
+	public int calculateSalary() {
+		return salary;
+	}
+
+	@Override
+	public void benefitLayout() {
+		System.out.println("Full time employees have great benefit package");
+	}
+
+
+	@Override
+	public void performance() {
+		System.out.println("Employee performance is "+rating);
+
+	}
+
+
+	public String getDept(String dept) {
+		return deptName;
+	}
+
+	public char getGender() {
+		return gender;
+	}
+
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+	public static String getCompanyName() {
+		return companyName;
+	}
+
+	public static void setCompanyName(String companyName) {
+		EmployeeInfo.companyName = companyName;
+	}
+	public void farewell (){
+		System.out.println("Farewell date is "+resignationDate);
+	}
+
+	@Override
+	public void farewell(int date) {
+		System.out.println(name+"'s last day was"+resignationDate);
+
+	}
+	public void annualSalary () {
+		int yearlySalary = salary*12;
+		System.out.println(yearlySalary);
+		calculateEmployeeBonus(10,50000);
 	}
 	
 	/*
@@ -47,9 +167,24 @@ public class EmployeeInfo {
 	 * So you probably need to send 2 arguments.
 	 * 
 	 */
-	public static int calculateEmployeeBonus(int numberOfYearsWithCompany){
-		int total=0;
-		return total;
+
+
+	public static int calculateEmployeeBonus(int numberOfYearsWithCompany,int yearlySalary){
+		double yearlyBonus = 0.00;
+		if (numberOfYearsWithCompany == 5) {
+			yearlyBonus = yearlySalary* 0.1;
+		} else if (numberOfYearsWithCompany == 4) {
+			yearlyBonus = yearlySalary * 0.08;
+		} else if (numberOfYearsWithCompany == 3) {
+			yearlyBonus = yearlySalary * 0.06;
+		} else if (numberOfYearsWithCompany == 2) {
+			yearlyBonus = 0;
+			System.out.println("Your performance is poor, needs improvement.");
+		} else {
+			yearlyBonus = 0;
+			System.out.println("You do not meet the standards for a bonus.");
+		}
+		return (int) yearlyBonus;
 	}
 	
 	/*
@@ -69,9 +204,28 @@ public class EmployeeInfo {
         String convertedTodaysDate = DateConversion.convertDate(todaysDate);
 
         //implement numbers of year from above two dates
+		String startYear = convertedJoiningDate.substring(convertedJoiningDate.length() - 4, convertedJoiningDate.length());
+		String currentYear = convertedTodaysDate.substring(convertedTodaysDate.length() - 4, convertedTodaysDate.length());
+		int start = Integer.parseInt(startYear);
+		int current = Integer.parseInt(currentYear);
+
 		//Calculate pension
+		int numberOfYears = current - start;
 
-
+		if (numberOfYears >= 5) {
+			total = (int) (salary * .25);
+		} else if (numberOfYears == 4) {
+			total = (int) (salary * .20);
+		} else if (numberOfYears == 3) {
+			total = (int) (salary * .15);
+		} else if (numberOfYears == 2) {
+			total = (int) (salary * .10);
+		} else if (numberOfYears == 1) {
+			total = (int) (salary * .05);
+		} else if (numberOfYears == 0) {
+			total = 0;
+		}
+		System.out.println("Total pension: $" + total);
 
 		return total;
 	}

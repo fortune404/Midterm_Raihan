@@ -41,7 +41,7 @@ public class LowestNumber {
 
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/classicmodels?serverTimezone=UTC","root","root");
 			Statement statement = conn.createStatement();
-			String insertQuery = "INSERT INTO owners(ownerNumber) values ("+lowestV+");";
+			String insertQuery = "INSERT INTO owners(ownerNumber) VALUES ("+lowestV+");";
 			statement.executeQuery(insertQuery);
 
 		} catch (Exception e) {

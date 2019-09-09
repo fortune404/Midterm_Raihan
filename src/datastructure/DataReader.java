@@ -27,8 +27,7 @@ public class DataReader {
 		 * Use For Each loop/while loop/Iterator to retrieve data.
 		 */
 
-		String textFile = System.getProperty("user.dir") + "/src/data/self-driving-car.txt";
-		String textFile2 = "/Users/fortunecookie/IdeaProjects/My_first_project/src/tutoring_DataReader/PracticeFileReader";
+		String textFile = System.getProperty("user.dir") + "/src/data/self-driving-car";
 
 
 
@@ -37,8 +36,8 @@ public class DataReader {
 
 
 		try {
-			fr = new FileReader(textFile2);
-			System.out.println("FileReader find the following path: " + textFile2 + "\n");
+			fr = new FileReader(textFile);
+			System.out.println("FileReader find the following path: " + textFile + "\n");
 		} catch (FileNotFoundException e) {
 			//e.printStackTrace();
 			System.out.println("We couldn't find the file");
