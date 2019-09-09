@@ -33,6 +33,7 @@ public class UnitTestingStringProblem {
 
       //Permutation unit testing
         Set<String> permutationResult = Permutation.usePermutation("BCA");
-      Assert.assertEquals(permutationResult,permutationResult);
+        Set<String> permutationExpectation = Permutation.usePermutation("BCA");
+      Assert.assertEquals(permutationResult,permutationExpectation);
     }
 }
