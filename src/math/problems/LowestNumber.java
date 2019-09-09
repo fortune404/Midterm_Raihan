@@ -2,12 +2,16 @@ package math.problems;
 
 import databases.ConnectToSqlDB;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LowestNumber {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		/*
 		 * Write java solution to find the lowest number from this array.
 		 * Use one of the databases from mysql or mongodb to store and to retrieve.
@@ -18,19 +22,35 @@ public class LowestNumber {
 
 		System.out.println("Lowest number: "+getLowest(array,array.length));
 
-		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
-		List<String> lowestValue = new ArrayList<String>();
+		int lowestV = getLowest(array,array.length);
+
+//		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
+//		List<String> lowestValue = new ArrayList<String>();
+
+//		Connection connection = null;
+//		Statement statement = null;
+
+//		String url = "jdbc:mysql://localhost:3306/pnt?serverTimezone=UTC";
+//
+//		connection = DriverManager.getConnection(url, "root","root");
 		try {
-			connectToSqlDB.insertDataFromArrayToSqlTable(array, "tbl_lowestNumber", "column_lowestNumber");
-			lowestValue = connectToSqlDB.readDataBase("tbl_lowestNumber", "column_lowestNumber");
+			//connectToSqlDB.insertDataFromArrayToSqlTable(array, "tbl_lowestNumber", "column_lowestNumber");
+			//lowestValue = connectToSqlDB.readDataBase("tbl_lowestNumber", "column_lowestNumber");
+
+			Class.forName("com.mysql.cj.jdbc.Driver");//
+
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/classicmodels?serverTimezone=UTC","root","root");
+			Statement statement = conn.createStatement();
+			String insertQuery = "INSERT INTO owners(ownerNumber) values ("+lowestV+");";
+			statement.executeQuery(insertQuery);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("Data is reading from the Table (tbl_primenumber) and displaying to the console");
-		for(String st:lowestValue){
-			System.out.println(st);
-		}
+//		System.out.println("Data is reading from the Table (tbl_primenumber) and displaying to the console");
+//		for(String st:lowestValue){
+//			System.out.println(st);
+//		}
 	}
 
 
