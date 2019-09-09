@@ -29,7 +29,8 @@ public class DetermineLargestWord {
             if(largestWord[i].length()>st.length()){
                 st = largestWord[i];
             }
-        }map.put(st.length(),st);
+        }
+        map.put(st.length(),st);
 
         return map;
     }
